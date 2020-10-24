@@ -1,54 +1,42 @@
 pipeline {
-    agent any
-    environment {
-        dockerImageName = "lsstts/conda_package_builder:latest"
-        container_name = "ddsconfig_${BUILD_ID}_${JENKINS_NODE_COOKIE}"
-    }
-    parameters {
-        string(defaultValue: '5.1.0', description: 'The XML Version, exclude any preceeding "v" characters: X.Y.Z', name: 'xml_version')
-        string(defaultValue: '4.1.2', description: 'The ts_sal version, exclude any preceeding "v" characters: X.Y.Z', name: 'sal_version')
-        booleanParam(defaultValue: false, description: "Is this a development build?", name: 'develop')
-    }
+    agent { label 'CSC_Conda_Node'}
 
+    environment {
+        package_name = "ddsconfig"
+        dockerImageName = "lsstts/conda_package_builder:latest"
+        container_name = "salobj_${BUILD_ID}_${JENKINS_NODE_COOKIE}"
+    }
     stages {
         stage("Pull Docker Image") {
             steps {
                 script {
+                sh """
+                docker pull ${dockerImageName}
+                """
+                }
+            }
+        }
+        stage("Start builder"){
+            steps {
+                script {
                     sh """
-                    docker pull ${dockerImageName}
-                    docker run --name ${container_name} -di --rm --env TS_XML_VERSION=${params.xml_version} \
-                        --env TS_SAL_VERSION=${sal_version} -v ${WORKSPACE}:/home/saluser/package_dir ${dockerImageName}
+                    docker run --name ${container_name} -di --rm \
+                        -v ${WORKSPACE}:/home/saluser/source ${dockerImageName}
                     """
                 }
             }
         }
-        stage("Create IDL Conda package") {
+        stage("Create Conda package") {
             steps {
                 script {
-                    sh """echo 'The XML version: ${params.xml_version}'"""
-                    sh """echo 'The SAL version: ${params.sal_version}'"""
-                    timeout(5) {
-                        waitUntil(initialRecurrencePeriod: 15000, quiet: true) {
-                            def r = sh (
-                                script: """docker exec -u root ${container_name} sh -c 'yum clean all ; \
-                                    yum --enablerepo=\'lsst-ts-daily\' list ts_sal_runtime-${params.xml_version}-${params.sal_version}.el7.x86_64' """,
-                                returnStatus: true
-                            )
-                            return r == 0
-                        }
-                    }
                     sh """
-                    docker exec -u root -w /tmp ${container_name} sh -c "yum clean all ; yum update ; \
-                        yum install -y --enablerepo="lsst-ts-daily" \
-                            ts_sal_runtime-${params.xml_version}-${params.sal_version}.el7.x86_64"
-                    docker exec ${container_name} sh -c "cd ~/package_dir/conda && source ~/miniconda3/bin/activate && conda build ."
-                    docker exec ${container_name} sh -c "ls ~/miniconda3/conda-bld/linux-64"
+                    docker exec ${container_name} sh -c 'cd ~/source/conda && source ~/miniconda3/bin/activate && source "\$OSPL_HOME/release.com" && conda build --prefix-length 100 .'
                     """
                 }
             }
         }
         stage("Push Conda package") {
-            when { not{ expression { return env.develop.toBoolean() } } }
+            when { expression { env.TAG_NAME != null } }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'CondaForge', passwordVariable: 'anaconda_pass', usernameVariable: 'anaconda_user')]) {
                     script {
@@ -56,14 +44,14 @@ pipeline {
                         docker exec ${container_name} sh -c "source ~/miniconda3/bin/activate && \
                             anaconda login --user ${anaconda_user} --password ${anaconda_pass} && \
                             anaconda upload -u lsstts --force \
-                            ~/miniconda3/conda-bld/linux-64/ts-ddsconfig-*-py37_0.tar.bz2"
+                            ~/miniconda3/conda-bld/linux-64/ts-${package_name}*.tar.bz2"
                         """
                     }
                 }
             }
         }
         stage("Push develop conda package") {
-            when { expression { return env.develop.toBoolean() } }
+            when { expression { env.TAG_NAME == null } }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'CondaForge', passwordVariable: 'anaconda_pass', usernameVariable: 'anaconda_user')]) {
                     script {
@@ -71,7 +59,7 @@ pipeline {
                         docker exec ${container_name} sh -c "source ~/miniconda3/bin/activate && \
                             anaconda login --user ${anaconda_user} --password ${anaconda_pass} && \
                             anaconda upload -u lsstts --force  --label dev \
-                            ~/miniconda3/conda-bld/linux-64/ts-ddsconfig-*-py37_0.tar.bz2"
+                            ~/miniconda3/conda-bld/linux-64/ts-${package_name}*.tar.bz2"
                         """
                     }
                 }
@@ -83,12 +71,6 @@ pipeline {
             sh """
             docker stop ${container_name}
             """
-        }
-        always {
-            step([$class: 'Mailer',
-                notifyEveryUnstableBuild: false,
-                recipients: "cwinslow@lsst.org",
-                sendToIndividuals: true])
         }
     }
 }

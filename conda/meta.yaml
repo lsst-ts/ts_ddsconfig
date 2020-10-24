@@ -7,7 +7,20 @@ source:
   path: ../
 
 build:
-  skip: False #[win]
+  script: python -m pip install --no-deps --ignore-installed .
+
+test:
+  requires:
+    - ts-conda-build
+  source_files:
+    - python
+    - tests
+    - qos
+    - config
+    - setup.cfg
+
+  commands:
+    - py.test
 
 requirements:
   host:
