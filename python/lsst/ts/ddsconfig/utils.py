@@ -18,21 +18,21 @@
 #
 # You should have received a copy of the GNU General Public License
 
-__all__ = ["get_pkg_root", "get_config_dir", "get_qos_path"]
+__all__ = ["get_data_root", "get_config_dir", "get_qos_path"]
 
 import pathlib
 
 
-def get_pkg_root() -> pathlib.Path:
+def get_data_root() -> pathlib.Path:
     """Return the root directory of this package."""
-    return pathlib.Path(__file__).resolve().parents[4]
+    return pathlib.Path(__file__).resolve().parent / "data"
 
 
 def get_config_dir() -> pathlib.Path:
     """Return the path to the ``config`` dir within this package."""
-    return get_pkg_root() / "config"
+    return get_data_root() / "config"
 
 
 def get_qos_path() -> pathlib.Path:
     """Return the path to the OpenSplice quality of service config file."""
-    return get_pkg_root() / "qos" / "QoS.xml"
+    return get_data_root() / "qos" / "QoS.xml"

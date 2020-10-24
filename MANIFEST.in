@@ -1,1 +1,1 @@
-include config/*.xml
+include python/lsst/ts/ddsconfig/data

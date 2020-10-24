@@ -20,20 +20,15 @@ __version__ = "{version}"
 setuptools.setup(
     name="ts_ddsconfig",
     description="OpenSplice configuration files for Vera Rubin observatory control system.",
-    # install_requires=install_requires,
-    package_dir={"": "python"},
+    install_requires=install_requires,
+    package_dir={"lsst": "python/lsst"},
     use_scm_version={
         "write_to": "python/lsst/ts/ddsconfig/version.py",
         "write_to_template": scm_version_template,
     },
-    packages=setuptools.find_namespace_packages(where="python"),
-    data_files=[
-        (data_files_path / "qos", ["qos/QoS.xml"]),
-        (data_files_path / "config", config_files),
-    ],
+    packages=['lsst', 'lsst.ts', 'lsst.ts.ddsconfig'],
     include_package_data=True,
-    # scripts=[],
-    # tests_require=tests_require,
+    tests_require=tests_require,
     extras_require={"dev": dev_requires},
     license="GPL",
     project_url={

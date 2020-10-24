@@ -23,15 +23,15 @@ import pathlib
 from lsst.ts import ddsconfig
 
 
-def get_desired_pkg_root() -> pathlib.Path:
-    return pathlib.Path(__file__).parent.parent
+def get_desired_data_root() -> pathlib.Path:
+    return pathlib.Path(ddsconfig.__file__).parent / "data"
 
 
-def test_get_pkg_root() -> None:
-    pkg_root = ddsconfig.get_pkg_root()
+def test_get_data_root() -> None:
+    pkg_root = ddsconfig.get_data_root()
     assert pkg_root.exists()
     assert pkg_root.is_dir()
-    desired_pkg_root = get_desired_pkg_root()
+    desired_pkg_root = get_desired_data_root()
     assert pkg_root.samefile(desired_pkg_root)
 
 
@@ -39,7 +39,7 @@ def test_get_config_dir() -> None:
     config_dir = ddsconfig.get_config_dir()
     assert config_dir.exists()
     assert config_dir.is_dir()
-    desired_config_dir = get_desired_pkg_root() / "config"
+    desired_config_dir = get_desired_data_root() / "config"
     assert config_dir.samefile(desired_config_dir)
 
 
@@ -47,5 +47,5 @@ def test_get_qos_path() -> None:
     qos_path = ddsconfig.get_qos_path()
     assert qos_path.exists()
     assert qos_path.is_file()
-    desired_qos_path = get_desired_pkg_root() / "qos" / "Qos.xml"
+    desired_qos_path = get_desired_data_root() / "qos" / "Qos.xml"
     assert qos_path.samefile(desired_qos_path)
