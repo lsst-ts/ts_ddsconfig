@@ -1,5 +1,4 @@
 import glob
-import os
 import pathlib
 import setuptools
 import sys
@@ -29,8 +28,8 @@ setuptools.setup(
     },
     packages=setuptools.find_namespace_packages(where="python"),
     data_files=[
-        (os.path.join(data_files_path, "qos"), ["qos/QoS.xml"]),
-        (os.path.join(data_files_path, "config"), config_files),
+        (data_files_path / "qos", ["qos/QoS.xml"]),
+        (data_files_path / "config", config_files),
     ],
     include_package_data=True,
     # scripts=[],
