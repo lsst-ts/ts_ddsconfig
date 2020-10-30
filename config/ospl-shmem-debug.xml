@@ -116,7 +116,7 @@
             <NameSpace name="defaultNamespace">
                 <Partition>${LSST_DDS_PARTITION_PREFIX}*</Partition>
             </NameSpace>
-            <Policy alignee="Initial"
+            <Policy alignee="${LSST_DDS_ALIGNEE:-Initial}"
                     aligner="true"
                     durability="Durable"
                     masterPriority="${OSPL_MASTER_PRIORITY:-1}"
