@@ -1,5 +1,7 @@
 Configuration files for OpenSplice DDS
 
+Documentation: `ts-ddsconfig.lsst.io <https://ts-ddsconfig.lsst.io/>`_
+
 Contents:
 
 * config: OpenSplice configuration files, including separate files
