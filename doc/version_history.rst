@@ -6,6 +6,11 @@
 Version History
 ###############
 
+v0.2.1
+======
+
+* Updated Jenkinsfile.conda to use Jenkins Shared Library
+
 v0.2.0
 ======
 * Add LSST_DDS_ALIGNEE environment variable to aid setting DurabilityService.Namespaces.Policy.alignee. Default is Initial.
