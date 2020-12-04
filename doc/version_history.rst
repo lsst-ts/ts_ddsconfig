@@ -6,10 +6,16 @@
 Version History
 ###############
 
-v0.2.1
+v0.3.1
 ======
 
-* Updated Jenkinsfile.conda to use Jenkins Shared Library
+* Update Jenkinsfile.conda to use Jenkins Shared Library.
+
+v0.3.0
+======
+
+* Add `ospl-std.xml`, a non-shared-memory configuration, for unit testing and development.
+* Increase topic database size from 1Gb to 5GB in the shared memory configurations.
 
 v0.2.0
 ======
