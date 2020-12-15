@@ -85,9 +85,12 @@
         <Internal>
             <Watermarks>
                 <WhcHigh>8MB</WhcHigh>
+                <WhcHighInit>8MB</WhcHighInit>
+                <WhcAdaptive>false</WhcAdaptive>
             </Watermarks>
             <DeliveryQueueMaxSamples>10000</DeliveryQueueMaxSamples>
             <SquashParticipants>true</SquashParticipants>
+            <ResponsivenessTimeout>${LSST_DDS_RESPONSIVENESS_TIMEOUT:-inf}</ResponsivenessTimeout>
         </Internal>
     </DDSI2Service>
     <DurabilityService name="durability">
@@ -107,7 +110,7 @@
             <NameSpace name="defaultNamespace">
                 <Partition>${LSST_DDS_PARTITION_PREFIX}*</Partition>
             </NameSpace>
-            <Policy alignee="${LSST_DDS_ALIGNEE:-Initial}"
+            <Policy alignee="${LSST_DDS_ALIGNEE:-Lazy}"
                     aligner="true"
                     durability="Durable"
                     masterPriority="${OSPL_MASTER_PRIORITY:-1}"
