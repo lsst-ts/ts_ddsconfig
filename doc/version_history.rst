@@ -6,6 +6,14 @@
 Version History
 ###############
 
+v0.4.0
+======
+
+* Change DurabilityService.Namespaces.Policy.alignee default to Lazy.
+* Add attribute for turning off adaptive watermarks.
+* Add attribute to set the size of the initial high watermark to max size.
+* LSST_DDS_REPSONSIVENESS_TIMEOUT environment variable to assist with single process mode CSCs. Default is inf.
+
 v0.3.1
 ======
 
