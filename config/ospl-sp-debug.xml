@@ -94,7 +94,7 @@
                 <Partition>${LSST_DDS_PARTITION_PREFIX}*</Partition>
             </NameSpace>
             <Policy alignee="${LSST_DDS_ALIGNEE:-Lazy}"
-                    aligner="true"
+                    aligner="${LSST_DDS_ALIGNER:-false}"
                     durability="Durable"
                     masterPriority="${OSPL_MASTER_PRIORITY:-1}"
                     nameSpace="defaultNamespace"/>

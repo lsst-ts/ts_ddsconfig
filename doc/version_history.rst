@@ -6,6 +6,12 @@
 Version History
 ###############
 
+v0.4.1
+======
+
+* Make DurabilityService.Namespaces.Policy.aligner settable via LSST_DDS_ALIGNER environment variable.
+* Set DurabilityService.Namespaces.Policy.aligner to false by default.
+
 v0.4.0
 ======
 
