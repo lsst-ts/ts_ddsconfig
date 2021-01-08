@@ -104,6 +104,7 @@
             <OutputFile>durability.log</OutputFile>
         </Tracing>
         <Network>
+            <InitialDiscoveryPeriod>10.0</InitialDiscoveryPeriod>
             <Alignment>
                 <TimeAlignment>false</TimeAlignment>
                 <RequestCombinePeriod>

@@ -95,6 +95,7 @@
     </DDSI2Service>
     <DurabilityService name="durability">
         <Network>
+            <InitialDiscoveryPeriod>10.0</InitialDiscoveryPeriod>
             <Alignment>
                 <TimeAlignment>false</TimeAlignment>
                 <RequestCombinePeriod>
