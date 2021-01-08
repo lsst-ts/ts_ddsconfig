@@ -36,7 +36,7 @@
             <Alignment>
                 <TimeAlignment>false</TimeAlignment>
                 <RequestCombinePeriod>
-                    <Initial>2.5</Initial>
+                    <Initial>5.0</Initial>
                     <Operational>0.1</Operational>
                 </RequestCombinePeriod>
             </Alignment>
