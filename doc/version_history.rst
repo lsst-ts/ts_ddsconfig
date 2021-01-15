@@ -6,6 +6,14 @@
 Version History
 ###############
 
+v0.5.0
+======
+
+* Increase startup attributes to maximums
+
+  * Add DurabilityService.Network.InitialDiscoverPeriod and set to 10 seconds
+  * Move DurabilityService.Network.Alignment.RequestCombinePeriod.Initial from 2.5 seconds to 5.0 seconds
+
 v0.4.1
 ======
 
