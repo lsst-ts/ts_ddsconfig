@@ -6,11 +6,6 @@
 Version History
 ###############
 
-v0.5.1
-======
-
-* Add NetworkService.General.Reconnection and set @allowed to true
-
 v0.5.0
 ======
 
