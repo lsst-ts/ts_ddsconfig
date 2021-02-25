@@ -94,14 +94,14 @@
             <ResponsivenessTimeout>${LSST_DDS_RESPONSIVENESS_TIMEOUT:-inf}</ResponsivenessTimeout>
         </Internal>
         <Tracing>
-            <Verbosity>finer</Verbosity>
-            <OutputFile>ddsi2.log</OutputFile>
+            <Verbosity>${LSST_DDSI2_SERVICE_TRACING_VERBOSITY:-finer}</Verbosity>
+            <OutputFile>${LSST_DDSI2_SERVICE_TRACING_OUTPUT:-ddsi2.log}</OutputFile>
         </Tracing>
     </DDSI2Service>
     <DurabilityService name="durability">
         <Tracing>
-            <Verbosity>FINER</Verbosity>
-            <OutputFile>durability.log</OutputFile>
+            <Verbosity>${LSST_DURABILITY_SERVICE_TRACING_VERBOSITY:-FINER}</Verbosity>
+            <OutputFile>${LSST_DURABILITY_SERVICE_TRACING_OUTPUT:-durability.log}</OutputFile>
         </Tracing>
         <Network>
             <InitialDiscoveryPeriod>10.0</InitialDiscoveryPeriod>

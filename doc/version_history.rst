@@ -6,6 +6,17 @@
 Version History
 ###############
 
+v0.5.1
+======
+
+* Introduce new environment variables for service tracing control in OSPL debug configurations
+
+  * LSST_DDSI2_SERVICE_TRACING_VERBOSITY sets the logging level for tracing the DDSI2Service
+  * LSST_DDSI2_SERVICE_TRACING_OUTPUT sets the output location for DDSI2Service tracing
+  * LSST_DURABILITY_SERVICE_TRACING_VERBOSITY sets the logging level for tracing the DurabilityService
+  * LSST_DURABILITY_SERVICE_TRACING_OUTPUT sets the output location for DurabilityService tracing
+
+
 v0.5.0
 ======
 
