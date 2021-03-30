@@ -9,3 +9,9 @@ Contents:
 * qos/QoS.xml: quality of service configuration file.
 * python: functions to get the ``config`` directory and quality of service file.
 * ups: Files for using this package with eups.
+
+This code uses ``pre-commit`` to maintain ``black`` formatting and ``flake8`` compliance.
+To enable this, run the following commands once (the first removes the previous pre-commit hook)::
+
+    git config --unset-all core.hooksPath
+    pre-commit install
