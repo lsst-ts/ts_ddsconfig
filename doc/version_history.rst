@@ -6,6 +6,16 @@
 Version History
 ###############
 
+v0.5.3
+======
+
+* Add pre-commit support; see README.rst to configure it.
+
+v0.5.2
+======
+
+* Modify the conda build to use noarch.
+
 v0.5.1
 ======
 
