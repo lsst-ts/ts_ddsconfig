@@ -6,6 +6,12 @@
 Version History
 ###############
 
+v0.6.0
+======
+
+* Consolidate tracing/debugging attributes to standard files.
+* Debug files should be deprecated and will be removed in the next version.
+
 v0.5.3
 ======
 

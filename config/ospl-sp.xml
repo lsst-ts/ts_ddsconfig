@@ -4,6 +4,7 @@
         <Id>${LSST_DDS_DOMAIN_ID:-0}</Id>
         <SingleProcess>true</SingleProcess>
         <Description>Stand-alone 'single-process' deployment and standard DDSI networking.</Description>
+        <Report verbosity="${LSST_DDS_REPORT_LEVEL:-INFO}"/>
         <Service name="ddsi2">
             <Command>ddsi2</Command>
         </Service>
@@ -66,8 +67,16 @@
             <DeliveryQueueMaxSamples>10000</DeliveryQueueMaxSamples>
             <ResponsivenessTimeout>${LSST_DDS_RESPONSIVENESS_TIMEOUT:-inf}</ResponsivenessTimeout>
         </Internal>
+        <Tracing>
+            <Verbosity>${LSST_DDSI2_SERVICE_TRACING_VERBOSITY:-none}</Verbosity>
+            <OutputFile>${LSST_DDSI2_SERVICE_TRACING_OUTPUT:-ddsi2.log}</OutputFile>
+        </Tracing>
     </DDSI2Service>
     <DurabilityService name="durability">
+        <Tracing enabled="${LSST_ENABLE_DURABILITY_SERVICE_TRACING:-false}">
+            <Verbosity>${LSST_DURABILITY_SERVICE_TRACING_VERBOSITY:-FINER}</Verbosity>
+            <OutputFile>${LSST_DURABILITY_SERVICE_TRACING_OUTPUT:-durability.log}</OutputFile>
+        </Tracing>
         <Network>
             <InitialDiscoveryPeriod>10.0</InitialDiscoveryPeriod>
             <Alignment>
