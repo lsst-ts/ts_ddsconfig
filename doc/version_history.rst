@@ -6,6 +6,11 @@
 Version History
 ###############
 
+v0.6.1
+======
+
+* Fix Jenkinsfile.conda to use noarch as arch.
+
 v0.6.0
 ======
 
