@@ -1,2 +1,2 @@
 @Library('JenkinsShared')_
-CondaPipeline([], "ts-ddsconfig", "lsst.ts.ddsconfig")
+CondaPipeline([], "ts-ddsconfig", "lsst.ts.ddsconfig", "noarch")
