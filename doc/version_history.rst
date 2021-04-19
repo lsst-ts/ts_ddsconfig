@@ -6,6 +6,10 @@
 Version History
 ###############
 
+v0.6.2
+
+* Add optional 200MB shmem configuration for memory limited embedded systems
+
 v0.6.1
 ======
 
