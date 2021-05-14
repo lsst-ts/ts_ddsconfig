@@ -43,6 +43,33 @@ User Guide
   For example: ``file:///home/saluser/repos/ts_ddsconfig/qos/QoS.xml``.
   Note that ts_sal_ uses this environment variable, but ts_salobj_ calls ``lsst.ts.ddsconfig.get_qos_path`` instead.
 
+General OSPL Environment Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+OpenSplice contains a few environment variables that aid in setting up the system.
+
+ADLINK_LICENSE
+  This points to directory containing your `Vortex OpenSplice`_ license.
+  Required if using the licensed version of `Vortex OpenSplice`_; ignored otherwise.
+  Example value: ``/opt/ADLINK/Vortex_v2/Device/VortexOpenSplice/6.10.3/HDE/x86_64.linux/etc``
+OSPL_HOME
+  The directory of the `Vortex OpenSplice`_ software and should contain subdirectories ``bin``, ``include``, ``lib``, etc.
+  This variable is **REQUIRED** for correct setup.
+  Example: ``/opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux``.
+OSPL_URI
+  A URI pointing to the main DDS configuration file, such as one of the config files in this package.
+  This variable is **REQUIRED** for correct setup.
+  Example value: ``file:///opt/OpenSpliceDDS/V6.9.0/HDE/x86_64.linux/etc/config/ospl.xml``
+OSPL_TEMP
+  A path to an alternate location for writing items OpenSplice writes into ``/tmp``.
+  Example value: ``/var/run``
+OSPL_INFOFILE
+  A full path specifying the location for writing the STDOUT logging to a file.
+  Example value: ``/var/log/my-process-info.log``
+OSPL_ERRORFILE
+  A full path specifying the location for writing the STDERR logging to a file.
+  Example value: ``/var/log/my-process-error.log``
+
 Environment Variables in OSPL Configuration Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -123,6 +150,7 @@ OSPL_MASTER_PRIORITY
 
 .. _ts_salobj: https://ts-salobj.lsst.io/
 .. _ts_sal: https://ts-sal.lsst.io/
+.. _Vortex OpenSplice: https://istkb.adlinktech.com/article/vortex-opensplice-documentation/
 
 Version History
 ===============

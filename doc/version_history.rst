@@ -6,6 +6,10 @@
 Version History
 ###############
 
+v0.6.3
+
+* Add documentation for OSPL setup environment variables.
+
 v0.6.2
 
 * Add optional 200MB shmem configuration for memory limited embedded systems
