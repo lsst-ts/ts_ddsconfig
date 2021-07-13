@@ -74,7 +74,6 @@
         </Compatibility>
         <Discovery>
             <ParticipantIndex>none</ParticipantIndex>
-            <DSGracePeriod>60s</DSGracePeriod>
         </Discovery>
         <Internal>
             <Watermarks>
