@@ -82,6 +82,12 @@ LSST_DDS_DOMAIN_ID
   Other domain IDs maybe used to test systems without effecting the production environment.
   The default is **0** (zero).
 
+LSST_DDS_SHMEM_SIZE
+  This variable controls the size in bytes of the shared memory database.
+  Defaults to 504857600 for standard shared memory configuration.
+  Defaults to 209715200 for embedded shared memory configuration.
+  See `/OpenSplice/Domain/Database/Size <http://download.ist.adlinktech.com/docs/Vortex/html/ospl/DeploymentGuide/guide.html#size>`_ for specifications.
+
 LSST_DDS_REPORT_LEVEL
   This variable controls the overall verbosity level of the OSPL log files.
   The default is **INFO**.
