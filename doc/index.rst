@@ -76,6 +76,11 @@ Environment Variables in OSPL Configuration Files
 The OSPL configuration files, ``ospl-shmem.xml`` and ``ospl-sp.xml`` files have a number of environment variables to control behavior.
 Except where noted, the environment variables are assumed to be present in both files.
 
+LSST_DDS_DOMAIN_NAME
+  This variable controls the name for the domain.
+  Defaults to ``ospl_sp_ddsi`` in all configurations.
+  See `/OpenSplice/Domain/Name <http://download.ist.adlinktech.com/docs/Vortex/html/ospl/DeploymentGuide/guide.html#name>`_.
+
 LSST_DDS_DOMAIN_ID
   This variable controls the domain ID that system communicate on.
   All of our sites use **0** for the production environment.
