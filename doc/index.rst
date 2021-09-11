@@ -101,7 +101,7 @@ LSST_DDS_REPORT_LEVEL
 LSST_DDS_INTERFACE
   This variable controls the networking interface that DDS should bind to.
   The default is **AUTO**.
-  See `/OpenSplice/DDSI2Service/General/NetworkInterfaceAddress <http://download.ist.adlinktech.com/docs/Vortex/html/ospl/DeploymentGuide/guide.html#id503>`_ for more specifications.
+  See `/OpenSplice/DDSI2Service/General/NetworkInterfaceAddress <http://download.ist.adlinktech.com/docs/Vortex/html/ospl/DeploymentGuide/guide.html#id506>`_ for more specifications.
 
 LSST_DDS_RESPONSIVENESS_TIMEOUT
   This variable determines how long unresponsive readers can block a transmit thread.
