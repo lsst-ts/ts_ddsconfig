@@ -6,6 +6,13 @@
 Version History
 ###############
 
+v0.8.0
+------
+
+* Add LSST_DDS_DOMAIN_NAME environment variable to control naming the domain.
+* Add LSST_DDS_SHMEM_SIZE environment variable to control sizing the shared memory database.
+* Fix an OpenSplice documentation URL.
+
 v0.7.0
 ------
 
