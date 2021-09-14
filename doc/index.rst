@@ -76,11 +76,22 @@ Environment Variables in OSPL Configuration Files
 The OSPL configuration files, ``ospl-shmem.xml`` and ``ospl-sp.xml`` files have a number of environment variables to control behavior.
 Except where noted, the environment variables are assumed to be present in both files.
 
+LSST_DDS_DOMAIN_NAME
+  This variable controls the name for the domain.
+  Defaults to ``ospl_sp_ddsi`` in all configurations.
+  See `/OpenSplice/Domain/Name <http://download.ist.adlinktech.com/docs/Vortex/html/ospl/DeploymentGuide/guide.html#name>`_.
+
 LSST_DDS_DOMAIN_ID
   This variable controls the domain ID that system communicate on.
   All of our sites use **0** for the production environment.
   Other domain IDs maybe used to test systems without effecting the production environment.
   The default is **0** (zero).
+
+LSST_DDS_SHMEM_SIZE
+  This variable controls the size in bytes of the shared memory database.
+  Defaults to 504857600 for standard shared memory configuration.
+  Defaults to 209715200 for embedded shared memory configuration.
+  See `/OpenSplice/Domain/Database/Size <http://download.ist.adlinktech.com/docs/Vortex/html/ospl/DeploymentGuide/guide.html#size>`_ for specifications.
 
 LSST_DDS_REPORT_LEVEL
   This variable controls the overall verbosity level of the OSPL log files.
@@ -90,7 +101,7 @@ LSST_DDS_REPORT_LEVEL
 LSST_DDS_INTERFACE
   This variable controls the networking interface that DDS should bind to.
   The default is **AUTO**.
-  See `/OpenSplice/DDSI2Service/General/NetworkInterfaceAddress <http://download.ist.adlinktech.com/docs/Vortex/html/ospl/DeploymentGuide/guide.html#id503>`_ for more specifications.
+  See `/OpenSplice/DDSI2Service/General/NetworkInterfaceAddress <http://download.ist.adlinktech.com/docs/Vortex/html/ospl/DeploymentGuide/guide.html#id506>`_ for more specifications.
 
 LSST_DDS_RESPONSIVENESS_TIMEOUT
   This variable determines how long unresponsive readers can block a transmit thread.

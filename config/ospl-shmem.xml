@@ -1,10 +1,10 @@
 <OpenSplice>
     <Domain>
-        <Name>ospl_sp_ddsi</Name>
+        <Name>${LSST_DDS_DOMAIN_NAME:-ospl_sp_ddsi}</Name>
         <Id>${LSST_DDS_DOMAIN_ID:-0}</Id>
         <Description>Federated deployment using shared-memory and standard DDSI networking.</Description>
         <Database>
-            <Size>504857600</Size>
+            <Size>${LSST_DDS_SHMEM_SIZE:-504857600}</Size>
         </Database>
         <Report verbosity="${LSST_DDS_REPORT_LEVEL:-INFO}"/>
         <Service name="ddsi2">

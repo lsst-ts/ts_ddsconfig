@@ -1,6 +1,6 @@
 <OpenSplice>
     <Domain>
-        <Name>ospl_sp_ddsi</Name>
+        <Name>${LSST_DDS_DOMAIN_NAME:-ospl_sp_ddsi}</Name>
         <Id>${LSST_DDS_DOMAIN_ID:-0}</Id>
         <SingleProcess>true</SingleProcess>
         <Description>Stand-alone 'single-process' deployment and standard DDSI networking.</Description>
