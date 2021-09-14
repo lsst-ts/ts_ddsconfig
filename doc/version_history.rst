@@ -6,6 +6,11 @@
 Version History
 ###############
 
+v0.9.0
+------
+
+* Update ownership QoS settings for Events and Telemetry from `EXCLUSIVE_OWNERSHIP_QOS` to `SHARED_OWNERSHIP`.
+
 v0.8.0
 ------
 
