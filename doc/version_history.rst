@@ -6,6 +6,11 @@
 Version History
 ###############
 
+v0.9.1
+------
+
+* Convert to `noarch: python`.
+
 v0.9.0
 ------
 
