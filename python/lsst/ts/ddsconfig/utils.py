@@ -30,9 +30,9 @@ def get_data_dir() -> pathlib.Path:
 
 def get_config_dir() -> pathlib.Path:
     """Return the path to the ``config`` dir within this package."""
-    return get_pkg_root() / "config"
+    return get_data_dir() / "config"
 
 
 def get_qos_path() -> pathlib.Path:
     """Return the path to the OpenSplice quality of service config file."""
-    return get_pkg_root() / "qos" / "QoS.xml"
+    return get_data_dir() / "qos" / "QoS.xml"
