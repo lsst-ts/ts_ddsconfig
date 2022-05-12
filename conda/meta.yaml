@@ -16,8 +16,6 @@ test:
   source_files:
     - python
     - tests
-    - qos
-    - config
     - setup.cfg
 
   commands:
