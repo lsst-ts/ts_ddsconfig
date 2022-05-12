@@ -18,14 +18,14 @@
 #
 # You should have received a copy of the GNU General Public License
 
-__all__ = ["get_pkg_root", "get_config_dir", "get_qos_path"]
+__all__ = ["get_data_dir", "get_config_dir", "get_qos_path"]
 
 import pathlib
 
 
-def get_pkg_root() -> pathlib.Path:
-    """Return the root directory of this package."""
-    return pathlib.Path(__file__).resolve().parents[4]
+def get_data_dir() -> pathlib.Path:
+    """Return the data directory of this package."""
+    return pathlib.Path(__file__).resolve().parents[0] / "data"
 
 
 def get_config_dir() -> pathlib.Path:
