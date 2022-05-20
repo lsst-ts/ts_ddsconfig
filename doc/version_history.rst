@@ -6,10 +6,14 @@
 Version History
 ###############
 
-v0.9.1
+v0.10.0
 ------
 
 * Convert to `noarch: python`.
+* Breaking change: move `qos` and `config` directories into a `data` directory inside the package directory.
+* Breaking change: rename `get_package_root` to `get_data_dir`.
+* Switch to `pyproject.toml`.
+  A minimal `setup.py` is required to be able to build the conda package.
 
 v0.9.0
 ------

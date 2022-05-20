@@ -16,10 +16,7 @@ test:
   source_files:
     - python
     - tests
-    - qos
-    - config
-    - setup.cfg
-
+    - pyproject.toml
   commands:
     - py.test
 

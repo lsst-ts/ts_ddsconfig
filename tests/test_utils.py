@@ -23,23 +23,30 @@ import pathlib
 from lsst.ts import ddsconfig
 
 
-def get_desired_pkg_root() -> pathlib.Path:
-    return pathlib.Path(__file__).parent.parent
+def get_desired_data_dir() -> pathlib.Path:
+    return (
+        pathlib.Path(__file__).parent.parent
+        / "python"
+        / "lsst"
+        / "ts"
+        / "ddsconfig"
+        / "data"
+    )
 
 
-def test_get_pkg_root() -> None:
-    pkg_root = ddsconfig.get_pkg_root()
-    assert pkg_root.exists()
-    assert pkg_root.is_dir()
-    assert (pkg_root / "config").exists()
-    assert (pkg_root / "qos").exists()
+def test_get_data_dir() -> None:
+    pkg_dir = ddsconfig.get_data_dir()
+    assert pkg_dir.exists()
+    assert pkg_dir.is_dir()
+    assert (pkg_dir / "config").exists()
+    assert (pkg_dir / "qos").exists()
 
 
 def test_get_config_dir() -> None:
     config_dir = ddsconfig.get_config_dir()
     assert config_dir.exists()
     assert config_dir.is_dir()
-    desired_config_dir = get_desired_pkg_root() / "config"
+    desired_config_dir = get_desired_data_dir() / "config"
     # The two paths may not match, because when conda runs this test
     # the ddsconfig function is in the installed package
     # but the unit test is not.
@@ -53,7 +60,7 @@ def test_get_qos_path() -> None:
     qos_path = ddsconfig.get_qos_path()
     assert qos_path.exists()
     assert qos_path.is_file()
-    desired_qos_path = get_desired_pkg_root() / "qos" / "QoS.xml"
+    desired_qos_path = get_desired_data_dir() / "qos" / "QoS.xml"
     # The two paths may not match, as explained in test_get_config_dir,
     # so test that the QoS files match, instead.
     with open(qos_path, "r") as f:
