@@ -153,6 +153,12 @@ LSST_DDS_ALIGNER
   The default is **false**.
   See `/OpenSplice/DurabilityService/Namespaces/Policy@aligner <http://download.ist.adlinktech.com/docs/Vortex/html/ospl/DeploymentGuide/guide.html#aligner>`_ for more details.
 
+LSST_DDS_MERGE_POLICY
+  This variable sets the merge policy for the given namespace.
+  **NOTE**: Only designated daemons may set this variable.
+  The default is **Ignore**.
+  See `/OpenSplice/DurabilityService/NameSpaces/Policy/Merge <http://download.ist.adlinktech.com/docs/Vortex/html/ospl/DeploymentGuide/guide.html#merge>`_ for more details.
+
 OSPL_MASTER_PRIORITY
   This variable sets the priority level for which durability service is the main (master).
   The main daemon is set to a value ~200.
