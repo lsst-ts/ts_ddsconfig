@@ -14,6 +14,7 @@ v0.10.0
 * Breaking change: rename `get_package_root` to `get_data_dir`.
 * Switch to `pyproject.toml`.
   A minimal `setup.py` is required to be able to build the conda package.
+* Add LSST_DDS_MERGE_POLICY environment variable to control the merge policy.
 
 v0.9.0
 ------
