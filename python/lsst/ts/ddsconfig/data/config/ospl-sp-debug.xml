@@ -2,10 +2,8 @@
     <Domain>
         <Name>${LSST_DDS_DOMAIN_NAME:-ospl_sp_ddsi}</Name>
         <Id>${LSST_DDS_DOMAIN_ID:-0}</Id>
-        <Description>Federated deployment using shared-memory and standard DDSI networking.</Description>
-        <Database>
-            <Size>${LSST_DDS_SHMEM_SIZE:-504857600}</Size>
-        </Database>
+        <SingleProcess>true</SingleProcess>
+        <Description>Stand-alone 'single-process' deployment and standard DDSI networking.</Description>
         <Report verbosity="DEBUG"/>
         <Service name="ddsi2">
             <Command>ddsi2</Command>
@@ -16,19 +14,7 @@
         <Service enabled="false" name="cmsoap">
             <Command>cmsoap</Command>
         </Service>
-        <ResourceLimits>
-          <MaxSamples>
-              <WarnAt>50000</WarnAt>
-          </MaxSamples>
-        </ResourceLimits>
         <Daemon>
-            <shmMonitor>
-                <Scheduling>
-                    <Class>Default</Class>
-                    <Priority>0</Priority>
-                </Scheduling>
-                <StackSize>6000000</StackSize>
-            </shmMonitor>
             <Watchdog>
                 <Scheduling>
                     <Class>Default</Class>
@@ -58,9 +44,6 @@
                 <StackSize>6000000</StackSize>
             </ResendManager>
         </Daemon>
-        <Listeners>
-            <StackSize>6000000</StackSize>
-        </Listeners>
     </Domain>
     <DDSI2Service name="ddsi2">
         <General>
@@ -82,7 +65,6 @@
                 <WhcAdaptive>false</WhcAdaptive>
             </Watermarks>
             <DeliveryQueueMaxSamples>10000</DeliveryQueueMaxSamples>
-            <SquashParticipants>true</SquashParticipants>
             <ResponsivenessTimeout>${LSST_DDS_RESPONSIVENESS_TIMEOUT:-inf}</ResponsivenessTimeout>
         </Internal>
         <Tracing>
@@ -100,7 +82,7 @@
             <Alignment>
                 <TimeAlignment>false</TimeAlignment>
                 <RequestCombinePeriod>
-                    <Initial>5.0</Initial>
+                    <Initial>2.5</Initial>
                     <Operational>0.1</Operational>
                 </RequestCombinePeriod>
             </Alignment>
@@ -116,7 +98,9 @@
                     aligner="${LSST_DDS_ALIGNER:-false}"
                     durability="Durable"
                     masterPriority="${OSPL_MASTER_PRIORITY:-1}"
-                    nameSpace="defaultNamespace"/>
+                    nameSpace="defaultNamespace">
+                <Merge scope="*" type="${LSST_DDS_MERGE_POLICY:-Ignore}"/>
+            </Policy>
         </NameSpaces>
     </DurabilityService>
     <TunerService name="cmsoap">

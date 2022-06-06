@@ -7,7 +7,7 @@ source:
   path: ../
 
 build:
-  noarch: generic
+  noarch: python
   script: python -m pip install --no-deps --ignore-installed .
 
 test:
@@ -16,10 +16,7 @@ test:
   source_files:
     - python
     - tests
-    - qos
-    - config
-    - setup.cfg
-
+    - pyproject.toml
   commands:
     - py.test
 

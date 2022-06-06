@@ -6,7 +6,7 @@
         <Database>
             <Size>${LSST_DDS_SHMEM_SIZE:-504857600}</Size>
         </Database>
-        <Report verbosity="${LSST_DDS_REPORT_LEVEL:-INFO}"/>
+        <Report verbosity="DEBUG"/>
         <Service name="ddsi2">
             <Command>ddsi2</Command>
         </Service>
@@ -86,12 +86,12 @@
             <ResponsivenessTimeout>${LSST_DDS_RESPONSIVENESS_TIMEOUT:-inf}</ResponsivenessTimeout>
         </Internal>
         <Tracing>
-            <Verbosity>${LSST_DDSI2_SERVICE_TRACING_VERBOSITY:-none}</Verbosity>
+            <Verbosity>${LSST_DDSI2_SERVICE_TRACING_VERBOSITY:-finer}</Verbosity>
             <OutputFile>${LSST_DDSI2_SERVICE_TRACING_OUTPUT:-ddsi2.log}</OutputFile>
         </Tracing>
     </DDSI2Service>
     <DurabilityService name="durability">
-        <Tracing enabled="${LSST_ENABLE_DURABILITY_SERVICE_TRACING:-FALSE}">
+        <Tracing>
             <Verbosity>${LSST_DURABILITY_SERVICE_TRACING_VERBOSITY:-FINER}</Verbosity>
             <OutputFile>${LSST_DURABILITY_SERVICE_TRACING_OUTPUT:-durability.log}</OutputFile>
         </Tracing>
@@ -116,7 +116,9 @@
                     aligner="${LSST_DDS_ALIGNER:-false}"
                     durability="Durable"
                     masterPriority="${OSPL_MASTER_PRIORITY:-1}"
-                    nameSpace="defaultNamespace"/>
+                    nameSpace="defaultNamespace">
+                <Merge scope="*" type="${LSST_DDS_MERGE_POLICY:-Ignore}"/>
+            </Policy>
         </NameSpaces>
     </DurabilityService>
     <TunerService name="cmsoap">
