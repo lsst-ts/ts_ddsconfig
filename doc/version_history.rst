@@ -6,8 +6,14 @@
 Version History
 ###############
 
+v0.10.1
+-------
+
+* Add new ospl shmem configuration with no network.
+  This is useful in isolating systems for unit tests or other single node tests in general.
+
 v0.10.0
-------
+-------
 
 * Convert to `noarch: python`.
 * Breaking change: move `qos` and `config` directories into a `data` directory inside the package directory.
