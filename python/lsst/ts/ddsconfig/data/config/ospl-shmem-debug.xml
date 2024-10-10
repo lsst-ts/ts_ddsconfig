@@ -7,9 +7,9 @@
             <Size>${LSST_DDS_SHMEM_SIZE:-504857600}</Size>
         </Database>
         <Filters>
-            <Filter content="private_identity=&amp;quot;MTM1M3&amp;quot;">
+            <Filter content="private_identity=&amp;quot;MTCamera&amp;quot;">
                 <PartitionTopic>
-                    ${LSST_DDS_PARTITION_PREFIX}.lsst.sal.MTM1M3.*
+                    ${LSST_DDS_PARTITION_PREFIX}.lsst.sal.MTCamera.*
                 </PartitionTopic>
             </Filter>
         </Filters>
