@@ -9,7 +9,7 @@
         <Filters>
             <Filter content="private_identity LIKE &quot;MTCamera&quot;">
                 <PartitionTopic>
-                    ${LSST_DDS_PARTITION_PREFIX}.MTCamera.*
+                    ${LSST_DDS_PARTITION_PREFIX}.*
                 </PartitionTopic>
             </Filter>
         </Filters>
