@@ -7,7 +7,7 @@
             <Size>${LSST_DDS_SHMEM_SIZE:-504857600}</Size>
         </Database>
         <Filters>
-            <Filter content="">
+            <Filter content="private_identity=&amp;quot;MTM1M3&amp;quot;">
                 <PartitionTopic>
                     ${LSST_DDS_PARTITION_PREFIX}.lsst.sal.MTM1M3.*
                 </PartitionTopic>
